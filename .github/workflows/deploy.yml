@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.AZURE_VM_USER }}
         key: ${{ secrets.AZURE_SSH_KEY }}
         script: |
-          cd /project-experiment-akmal/node-akmal
+          cd /project-experiment-akmal/beginner-cloud/express-js-crud-master
           git pull origin main
           npm install --development
-          sudo systemctl restart nodeapp.service
+          sudo systemctl restart experiment-db.service
