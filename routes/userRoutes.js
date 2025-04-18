@@ -15,7 +15,7 @@ const pool = new Pool({
 // Get all users
 router.get('/', async (req, res) => {
    try {
-      console.log("test deploy1")
+      console.log("test deploy2")
       const result = await pool.query('SELECT * FROM users');
       res.json(result.rows);
    } catch (err) {
