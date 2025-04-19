@@ -1,4 +1,4 @@
-name: Deploy Express master akmal App to Azure VM
+name: Deploy Express master akmal App to Azure VM main
 
 on:
   push:
@@ -22,5 +22,5 @@ jobs:
         script: |
           cd /project-experiment-akmal/beginner-cloud/express-js-crud-master
           git pull origin main
-          npm install --development
+          npm install --main
           sudo systemctl restart experiment-db.service
