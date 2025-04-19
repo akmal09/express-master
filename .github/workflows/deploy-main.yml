@@ -1,9 +1,9 @@
-name: Deploy Express master akmal App to Azure VM for Staging
+name: Deploy Express master akmal App to Azure VM main
 
 on:
   push:
     branches:
-      - staging
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.AZURE_VM_USER }}
         key: ${{ secrets.AZURE_SSH_KEY }}
         script: |
-          cd /project-experiment-akmal/beginner-cloud/express-js-crud-master-stagging
-          git pull origin staging
-          npm install --staging
-          sudo systemctl restart experiment-db-stag.service
+          cd /project-experiment-akmal/beginner-cloud/express-js-crud-master
+          git pull origin main
+          npm install --main
+          sudo systemctl restart experiment-db.service

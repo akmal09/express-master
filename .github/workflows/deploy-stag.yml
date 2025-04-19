@@ -1,0 +1,26 @@
+name: Deploy Express master akmal App to Azure VM in staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Deploy to Azure VM via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.AZURE_VM_IP }}
+        username: ${{ secrets.AZURE_VM_USER }}
+        key: ${{ secrets.AZURE_SSH_KEY }}
+        script: |
+          cd /project-experiment-akmal/beginner-cloud/express-js-crud-master-stagging
+          git pull origin staging
+          npm install --staging
+          sudo systemctl restart experiment-db-stag.service
